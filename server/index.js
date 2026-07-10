@@ -1,7 +1,10 @@
 const express = require("express");
+const cors = require("cors");
+
 
 const app = express();
 
+app.use(cors())
 //every request passes through middleware before reaching your routes 
 app.use(express.json());
 

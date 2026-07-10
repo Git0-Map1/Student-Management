@@ -9,6 +9,17 @@ function App(){
         const response = await fetch("http://localhost:5000/students");
         const data = await response.json()
         setStudents(data)
+    }   
+
+    const addStudents = async () =>{
+        const response = await fetch("http://localhost:5000/students",{
+            method: "POST",
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify({name: name})
+        }
+        )
+        getStudents();
+        setName("");
     }
 
     useEffect(() => {
@@ -23,11 +34,11 @@ function App(){
                 value = {name}
                 onChange = {(e)=>(setName(e.target.value))}
                 />
-            <button> Add Student </button>
+            <button onClick={addStudents}> Add Student </button>
 
            {students.map((student)=>(
                 <div key = {student.id}>
-                {studend.name}
+                {student.name}
                 </div>
            )
            )}

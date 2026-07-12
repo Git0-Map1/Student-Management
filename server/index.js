@@ -38,12 +38,19 @@ app.get("/", (req,res) =>{
 //     });
 // });
 
+
 app.post("/students", (req, res) => {
+
+    if(!req.body.name){
+        return res.status(400).json({
+            message:"name field must not be empty"
+        })
+    }
     const newStudent = {
         id: students.length + 1,
         name: req.body.name
     };
-
+    
     students.push(newStudent);
 
     res.json({

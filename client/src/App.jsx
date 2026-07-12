@@ -91,8 +91,10 @@ function App() {
                     >
                         Delete
                     </button>
+
                 </div>
             ))}
+
         </>
     );
 }
